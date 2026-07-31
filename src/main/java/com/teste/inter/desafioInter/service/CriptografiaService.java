@@ -46,11 +46,11 @@ public class CriptografiaService {
     }
 
     public KeyPair gerarChaves() throws Exception{
-        KeyPairGenerator geneator = KeyPairGenerator.getInstance("RSA");
+        KeyPairGenerator generator = KeyPairGenerator.getInstance("RSA");
 
-        geneator.initialize(2048);
+        generator.initialize(2048);
 
-        return geneator.generateKeyPair();
+        return generator.generateKeyPair();
 
     }
 }
