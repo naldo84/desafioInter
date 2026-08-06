@@ -13,6 +13,10 @@ import com.teste.inter.desafioInter.dto.DigitoRequest;
 import com.teste.inter.desafioInter.model.DigitoUnico;
 import com.teste.inter.desafioInter.service.DigitoUnicoService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@Tag(name = "Digito Único", description = "Operações relacionadas ao cálculo do dígito único")
 @RestController
 @RequestMapping("/users/{userId}/digitos")
 public class DigitoUnicoController {
@@ -23,12 +27,14 @@ public class DigitoUnicoController {
         this.digitoUnicoService = digitoUnicoService;
     }
 
+    @Operation(summary = "Calcular dígito único", description = "Calcula o dígito único para um número")
     @PostMapping
     public DigitoUnico calcularDigitoUnico(@PathVariable Long userId, @RequestBody DigitoRequest digitoRequest){
 
         return digitoUnicoService.calcular(userId, digitoRequest.getNumero());
     }
 
+    @Operation(summary = "Listar resultados", description = "Lista todos os resultados de dígito único calculados por um usuário")
     @GetMapping
     public List<DigitoUnico> listar(@PathVariable Long userId){
         return digitoUnicoService.listarRessultados(userId);
