@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -65,15 +66,55 @@ public class DigitoUnicoServiceTest {
         verify(digitoUnicoRepository).findByUserId(1L);
     }
 
-
     @Test
-    void deveLancarExcecaoQuandoUsuarioNaoForEncontrado(){
+    void deveLancarExcecaoQuandoUsuarioNaoForEncontrado() {
         when(userRepository.findById(1L))
-        .thenReturn(Optional.empty());
+                .thenReturn(Optional.empty());
 
         RuntimeException exception = assertThrows(RuntimeException.class,
-            () -> digitoUnicoService.calcular(1L, 125));
+                () -> digitoUnicoService.calcular(1L, 125));
 
         assertEquals("Usuário não encontrado", exception.getMessage());
+    }
+
+    @Test
+    void deveAdicionarResultadoNoCache() {
+        User user = new User();
+
+        when(userRepository.findById(1L))
+                .thenReturn(Optional.of(user));
+
+        when(digitoUnicoRepository.save(any(DigitoUnico.class)))
+                .thenAnswer(digitoUnico -> digitoUnico.getArgument(0));
+
+        DigitoUnico resultado1 = digitoUnicoService.calcular(1L, 141);
+        DigitoUnico resultado2 = digitoUnicoService.calcular(1L, 141);
+
+        assertEquals(6, resultado1.getResultado());
+        assertEquals(6, resultado2.getResultado());
+
+        verify(digitoUnicoRepository, times(2)).save(any(DigitoUnico.class));
+    }
+
+    @Test
+    void deveBuscarResultadoNoCache() {
+        User user = new User();
+
+        when(userRepository.findById(1L))
+                .thenReturn(Optional.of(user));
+
+        when(digitoUnicoRepository.save(any(DigitoUnico.class)))
+                .thenAnswer(digitoUnico -> digitoUnico.getArgument(0));
+
+        //Primeiro resultado não está no cache, então será calculado e salvo
+        DigitoUnico resultado1 = digitoUnicoService.calcular(1L, 141);
+        
+        //Segundo resultado está no cache, então será retornado sem salvar novamente
+        DigitoUnico resultado2 = digitoUnicoService.calcular(1L, 141);
+
+        assertEquals(6, resultado1.getResultado());
+        assertEquals(6, resultado2.getResultado());
+
+        verify(digitoUnicoRepository, times(2)).save(any(DigitoUnico.class));   
     }
 }
