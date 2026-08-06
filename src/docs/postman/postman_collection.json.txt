@@ -1,0 +1,261 @@
+{
+	"info": {
+		"_postman_id": "f1739102-ff31-4e8d-aeab-8fa6c7a3fcda",
+		"name": "API-Desafio_Inter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30961815"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "CriarUsuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Erinaldo\",\n    \"email\": \"erinaldo@mail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarUsuarios",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Erinaldo\",\n    \"email\": \"erinaldo@mail.com\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/listar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"listar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarusuarioById Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Erinaldo\",\n    \"email\": \"erinaldo@mail.com\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/6/chave-publica",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"6",
+								"chave-publica"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AlterarUsuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Eriosvaldo\",\n    \"email\": \"eriosvaldo@mail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletarUsuario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Erinaldo\",\n    \"email\": \"erinaldo@mail.com\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EnviarChavePublica",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"chavePublica\": \"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsbYnqUVGPMORjSdCeHOK0eaM8KeReC6boX7KuYHSB2/PZK282Ea7vxof2hjp2gP1IkInnOdvNHoQq9jTDIk/AlkqIraezk+79FAOBtvGbthaSD8V1B1NXgr20S71SJo+67E+6cW4cBLgCRCM1xOF2hdJqmhguFE1N4h02eAMokK1L8dTOo7UxEf8zDZpXdGrgS1fVIdDYRwomH6u3madAlyD3yDFLYQMf4nqjNDGAM+FdH7w7l/KFlCDwGrAKvjEaFcdWyy1qKNrfuSBXnUF/lO9qEVtg64o3pphA7833OKurxm5eHDGJY44jDiTWVNnfyKTjfgUUz+0POPlTPv8AQIDAQAB\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/1/chave-publica",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"1",
+								"chave-publica"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Gerar-Chaves",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Erinaldo\",\n    \"email\": \"erinaldo@mail.com\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/gerar-chaves",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"gerar-chaves"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DigitoUnico",
+			"item": [
+				{
+					"name": "CalcularDigito",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"numero\": 3020\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/1/digitos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"1",
+								"digitos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarDigitos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users/1/digitos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"1",
+								"digitos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
