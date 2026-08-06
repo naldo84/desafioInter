@@ -10,4 +10,9 @@ class DesafioInterApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void deveExecutarMain(){
+		DesafioInterApplication.main(new String[] {});
+	}
+
 }
